@@ -1,9 +1,9 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 0.1.0
+      <b>Versión</b> 0.0.0
     </div>
-    <strong>Copyright &copy; ABC Inc. 2018-<?php echo date('Y') ?>.</strong> All rights reserved.
+    <strong>Copyright &copy; Team Feed 2019-<?php echo date('Y') ?>.</strong> Todos los derechos reservados.
   </footer>
 
   <!-- Add the sidebar's background. This div must be placed

@@ -160,6 +160,13 @@
     $("#mainProductNav").addClass('active');
     $("#addProductNav").addClass('active');
     
+    $(document).keypress(
+      function(event){
+        if (event.which == '13') {
+          event.preventDefault();
+        }
+    });
+    
     var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 
         'onclick="alert(\'Call your custom code here.\')">' +
         '<i class="glyphicon glyphicon-tag"></i>' +

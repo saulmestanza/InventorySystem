@@ -10,7 +10,7 @@ class Model_category extends CI_Model
 	/* get active brand infromation */
 	public function getActiveCategroy()
 	{
-		$sql = "SELECT * FROM categories WHERE active = ?";
+		$sql = "SELECT * FROM stock.categories WHERE active = ?";
 		$query = $this->db->query($sql, array(1));
 		return $query->result_array();
 	}
@@ -19,12 +19,12 @@ class Model_category extends CI_Model
 	public function getCategoryData($id = null)
 	{
 		if($id) {
-			$sql = "SELECT * FROM categories WHERE id = ?";
+			$sql = "SELECT * FROM stock.categories WHERE id = ?";
 			$query = $this->db->query($sql, array($id));
 			return $query->row_array();
 		}
 
-		$sql = "SELECT * FROM categories";
+		$sql = "SELECT * FROM stock.categories";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
@@ -32,7 +32,7 @@ class Model_category extends CI_Model
 	public function create($data)
 	{
 		if($data) {
-			$insert = $this->db->insert('categories', $data);
+			$insert = $this->db->insert('stock.categories', $data);
 			return ($insert == true) ? true : false;
 		}
 	}
@@ -41,7 +41,7 @@ class Model_category extends CI_Model
 	{
 		if($data && $id) {
 			$this->db->where('id', $id);
-			$update = $this->db->update('categories', $data);
+			$update = $this->db->update('stock.categories', $data);
 			return ($update == true) ? true : false;
 		}
 	}
@@ -50,7 +50,7 @@ class Model_category extends CI_Model
 	{
 		if($id) {
 			$this->db->where('id', $id);
-			$delete = $this->db->delete('categories');
+			$delete = $this->db->delete('stock.categories');
 			return ($delete == true) ? true : false;
 		}
 	}

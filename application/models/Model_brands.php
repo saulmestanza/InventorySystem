@@ -10,7 +10,7 @@ class Model_brands extends CI_Model
 	/*get the active brands information*/
 	public function getActiveBrands()
 	{
-		$sql = "SELECT * FROM brands WHERE active = ?";
+		$sql = "SELECT * FROM stock.brands WHERE active = ?";
 		$query = $this->db->query($sql, array(1));
 		return $query->result_array();
 	}
@@ -19,12 +19,12 @@ class Model_brands extends CI_Model
 	public function getBrandData($id = null)
 	{
 		if($id) {
-			$sql = "SELECT * FROM brands WHERE id = ?";
+			$sql = "SELECT * FROM stock.brands WHERE id = ?";
 			$query = $this->db->query($sql, array($id));
 			return $query->row_array();
 		}
 
-		$sql = "SELECT * FROM brands";
+		$sql = "SELECT * FROM stock.brands";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
@@ -32,7 +32,7 @@ class Model_brands extends CI_Model
 	public function create($data)
 	{
 		if($data) {
-			$insert = $this->db->insert('brands', $data);
+			$insert = $this->db->insert('stock.brands', $data);
 			return ($insert == true) ? true : false;
 		}
 	}
@@ -41,7 +41,7 @@ class Model_brands extends CI_Model
 	{
 		if($data && $id) {
 			$this->db->where('id', $id);
-			$update = $this->db->update('brands', $data);
+			$update = $this->db->update('stock.brands', $data);
 			return ($update == true) ? true : false;
 		}
 	}
@@ -50,7 +50,7 @@ class Model_brands extends CI_Model
 	{
 		if($id) {
 			$this->db->where('id', $id);
-			$delete = $this->db->delete('brands');
+			$delete = $this->db->delete('stock.brands');
 			return ($delete == true) ? true : false;
 		}
 	}

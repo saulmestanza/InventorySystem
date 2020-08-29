@@ -11,7 +11,7 @@ class Model_company extends CI_Model
 	public function getCompanyData($id = null)
 	{
 		if($id) {
-			$sql = "SELECT * FROM company WHERE id = ?";
+			$sql = "SELECT * FROM stock.company WHERE id = ?";
 			$query = $this->db->query($sql, array($id));
 			return $query->row_array();
 		}
@@ -21,7 +21,7 @@ class Model_company extends CI_Model
 	{
 		if($data && $id) {
 			$this->db->where('id', $id);
-			$update = $this->db->update('company', $data);
+			$update = $this->db->update('stock.company', $data);
 			return ($update == true) ? true : false;
 		}
 	}

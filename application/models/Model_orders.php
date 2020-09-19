@@ -11,12 +11,12 @@ class Model_orders extends CI_Model
 	public function getOrdersData($id = null)
 	{
 		if($id) {
-			$sql = "SELECT * FROM stock.orders WHERE id = ?";
+			$sql = "SELECT * FROM teamfdec_stock.orders WHERE id = ?";
 			$query = $this->db->query($sql, array($id));
 			return $query->row_array();
 		}
 
-		$sql = "SELECT * FROM stock.orders ORDER BY id DESC";
+		$sql = "SELECT * FROM teamfdec_stock.orders ORDER BY id DESC";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
@@ -28,7 +28,7 @@ class Model_orders extends CI_Model
 			return false;
 		}
 
-		$sql = "SELECT * FROM stock.orders_item WHERE order_id = ?";
+		$sql = "SELECT * FROM teamfdec_stock.orders_item WHERE order_id = ?";
 		$query = $this->db->query($sql, array($order_id));
 		return $query->result_array();
 	}
@@ -54,7 +54,7 @@ class Model_orders extends CI_Model
     		'user_id' => $user_id
     	);
 
-		$insert = $this->db->insert('stock.orders', $data);
+		$insert = $this->db->insert('teamfdec_stock.orders', $data);
 		$order_id = $this->db->insert_id();
 
 		$this->load->model('model_products');
@@ -69,7 +69,7 @@ class Model_orders extends CI_Model
     			'amount' => $this->input->post('amount_value')[$x],
     		);
 
-    		$this->db->insert('stock.orders_item', $items);
+    		$this->db->insert('teamfdec_stock.orders_item', $items);
 
     		// now decrease the stock from the product
     		$product_data = $this->model_products->getProductData($this->input->post('product')[$x]);
@@ -87,7 +87,7 @@ class Model_orders extends CI_Model
 	public function countOrderItem($order_id)
 	{
 		if($order_id) {
-			$sql = "SELECT * FROM stock.orders_item WHERE order_id = ?";
+			$sql = "SELECT * FROM teamfdec_stock.orders_item WHERE order_id = ?";
 			$query = $this->db->query($sql, array($order_id));
 			return $query->num_rows();
 		}
@@ -115,7 +115,7 @@ class Model_orders extends CI_Model
 	    	);
 
 			$this->db->where('id', $id);
-			$update = $this->db->update('stock.orders', $data);
+			$update = $this->db->update('teamfdec_stock.orders', $data);
 
 			// now the order item 
 			// first we will replace the product qty to original and subtract the qty again
@@ -147,7 +147,7 @@ class Model_orders extends CI_Model
 	    			'rate' => $this->input->post('rate_value')[$x],
 	    			'amount' => $this->input->post('amount_value')[$x],
 	    		);
-	    		$this->db->insert('stock.orders_item', $items);
+	    		$this->db->insert('teamfdec_stock.orders_item', $items);
 
 	    		// now decrease the stock from the product
 	    		$product_data = $this->model_products->getProductData($this->input->post('product')[$x]);

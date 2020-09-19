@@ -11,19 +11,19 @@ class Model_products extends CI_Model
 	public function getProductData($id = null)
 	{
 		if($id) {
-			$sql = "SELECT * FROM stock.products where id = ?";
+			$sql = "SELECT * FROM teamfdec_stock.products where id = ?";
 			$query = $this->db->query($sql, array($id));
 			return $query->row_array();
 		}
 
-		$sql = "SELECT * FROM stock.products ORDER BY id DESC";
+		$sql = "SELECT * FROM teamfdec_stock.products ORDER BY id DESC";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
 
 	public function getActiveProductData()
 	{
-		$sql = "SELECT * FROM stock.products WHERE availability = ? ORDER BY id DESC";
+		$sql = "SELECT * FROM teamfdec_stock.products WHERE availability = ? ORDER BY id DESC";
 		$query = $this->db->query($sql, array(1));
 		return $query->result_array();
 	}
@@ -31,7 +31,7 @@ class Model_products extends CI_Model
 	public function create($data)
 	{
 		if($data) {
-			$insert = $this->db->insert('stock.products', $data);
+			$insert = $this->db->insert('teamfdec_stock.products', $data);
 			return ($insert == true) ? true : false;
 		}
 	}
@@ -40,7 +40,7 @@ class Model_products extends CI_Model
 	{
 		if($data && $id) {
 			$this->db->where('id', $id);
-			$update = $this->db->update('stock.products', $data);
+			$update = $this->db->update('teamfdec_stock.products', $data);
 			return ($update == true) ? true : false;
 		}
 	}
@@ -49,14 +49,14 @@ class Model_products extends CI_Model
 	{
 		if($id) {
 			$this->db->where('id', $id);
-			$delete = $this->db->delete('stock.products');
+			$delete = $this->db->delete('teamfdec_stock.products');
 			return ($delete == true) ? true : false;
 		}
 	}
 
 	public function countTotalProducts()
 	{
-		$sql = "SELECT * FROM stock.products";
+		$sql = "SELECT * FROM teamfdec_stock.products";
 		$query = $this->db->query($sql);
 		return $query->num_rows();
 	}

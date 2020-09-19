@@ -10,7 +10,7 @@ class Model_attributes extends CI_Model
 	// get the active atttributes data 
 	public function getActiveAttributeData()
 	{
-		$sql = "SELECT * FROM stock.attributes WHERE active = ?";
+		$sql = "SELECT * FROM teamfdec_stock.attributes WHERE active = ?";
 		$query = $this->db->query($sql, array(1));
 		return $query->result_array();
 	}
@@ -19,12 +19,12 @@ class Model_attributes extends CI_Model
 	public function getAttributeData($id = null)
 	{
 		if($id) {
-			$sql = "SELECT * FROM stock.attributes where id = ?";
+			$sql = "SELECT * FROM teamfdec_stock.attributes where id = ?";
 			$query = $this->db->query($sql, array($id));
 			return $query->row_array();
 		}
 
-		$sql = "SELECT * FROM stock.attributes";
+		$sql = "SELECT * FROM teamfdec_stock.attributes";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
@@ -32,7 +32,7 @@ class Model_attributes extends CI_Model
 	public function countAttributeValue($id = null)
 	{
 		if($id) {
-			$sql = "SELECT * FROM stock.attribute_value WHERE attribute_parent_id = ?";
+			$sql = "SELECT * FROM teamfdec_stock.attribute_value WHERE attribute_parent_id = ?";
 			$query = $this->db->query($sql, array($id));
 			return $query->num_rows();
 		}
@@ -42,14 +42,14 @@ class Model_attributes extends CI_Model
 	// $id = attribute_parent_id
 	public function getAttributeValueData($id = null)
 	{
-		$sql = "SELECT * FROM stock.attribute_value WHERE attribute_parent_id = ?";
+		$sql = "SELECT * FROM teamfdec_stock.attribute_value WHERE attribute_parent_id = ?";
 		$query = $this->db->query($sql, array($id));
 		return $query->result_array();
 	}
 
 	public function getAttributeValueById($id = null)
 	{
-		$sql = "SELECT * FROM stock.attribute_value WHERE id = ?";
+		$sql = "SELECT * FROM teamfdec_stock.attribute_value WHERE id = ?";
 		$query = $this->db->query($sql, array($id));
 		return $query->row_array();
 	}
@@ -57,7 +57,7 @@ class Model_attributes extends CI_Model
 	public function create($data)
 	{
 		if($data) {
-			$insert = $this->db->insert('stock.attributes', $data);
+			$insert = $this->db->insert('teamfdec_stock.attributes', $data);
 			return ($insert == true) ? true : false;
 		}
 	}
@@ -66,7 +66,7 @@ class Model_attributes extends CI_Model
 	{
 		if($data && $id) {
 			$this->db->where('id', $id);
-			$update = $this->db->update('stock.attributes', $data);
+			$update = $this->db->update('teamfdec_stock.attributes', $data);
 			return ($update == true) ? true : false;
 		}
 	}
@@ -75,7 +75,7 @@ class Model_attributes extends CI_Model
 	{
 		if($id) {
 			$this->db->where('id', $id);
-			$delete = $this->db->delete('stock.attributes');
+			$delete = $this->db->delete('teamfdec_stock.attributes');
 			return ($delete == true) ? true : false;
 		}
 	}
@@ -83,7 +83,7 @@ class Model_attributes extends CI_Model
 	public function createValue($data)
 	{
 		if($data) {
-			$insert = $this->db->insert('stock.attribute_value', $data);
+			$insert = $this->db->insert('teamfdec_stock.attribute_value', $data);
 			return ($insert == true) ? true : false;
 		}
 	}
@@ -92,7 +92,7 @@ class Model_attributes extends CI_Model
 	{
 		if($data && $id) {
 			$this->db->where('id', $id);
-			$update = $this->db->update('stock.attribute_value', $data);
+			$update = $this->db->update('teamfdec_stock.attribute_value', $data);
 			return ($update == true) ? true : false;
 		}
 	}

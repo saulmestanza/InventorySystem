@@ -10,12 +10,12 @@ class Model_users extends CI_Model
 	public function getUserData($userId = null) 
 	{
 		if($userId) {
-			$sql = "SELECT * FROM stock.users WHERE id = ?";
+			$sql = "SELECT * FROM teamfdec_stock.users WHERE id = ?";
 			$query = $this->db->query($sql, array($userId));
 			return $query->row_array();
 		}
 
-		$sql = "SELECT * FROM stock.users WHERE id != ?";
+		$sql = "SELECT * FROM teamfdec_stock.users WHERE id != ?";
 		$query = $this->db->query($sql, array(1));
 		return $query->result_array();
 	}
@@ -23,12 +23,12 @@ class Model_users extends CI_Model
 	public function getUserGroup($userId = null) 
 	{
 		if($userId) {
-			$sql = "SELECT * FROM stock.user_group WHERE user_id = ?";
+			$sql = "SELECT * FROM teamfdec_stock.user_group WHERE user_id = ?";
 			$query = $this->db->query($sql, array($userId));
 			$result = $query->row_array();
 
 			$group_id = $result['group_id'];
-			$g_sql = "SELECT * FROM stock.groups WHERE id = ?";
+			$g_sql = "SELECT * FROM teamfdec_stock.groups WHERE id = ?";
 			$g_query = $this->db->query($g_sql, array($group_id));
 			$q_result = $g_query->row_array();
 			return $q_result;
@@ -39,7 +39,7 @@ class Model_users extends CI_Model
 	{
 
 		if($data && $group_id) {
-			$create = $this->db->insert('stock.users', $data);
+			$create = $this->db->insert('teamfdec_stock.users', $data);
 
 			$user_id = $this->db->insert_id();
 
@@ -48,7 +48,7 @@ class Model_users extends CI_Model
 				'group_id' => $group_id
 			);
 
-			$group_data = $this->db->insert('stock.user_group', $group_data);
+			$group_data = $this->db->insert('teamfdec_stock.user_group', $group_data);
 
 			return ($create == true && $group_data) ? true : false;
 		}
@@ -57,13 +57,13 @@ class Model_users extends CI_Model
 	public function edit($data = array(), $id = null, $group_id = null)
 	{
 		$this->db->where('id', $id);
-		$update = $this->db->update('stock.users', $data);
+		$update = $this->db->update('teamfdec_stock.users', $data);
 
 		if($group_id) {
 			// user group
 			$update_user_group = array('group_id' => $group_id);
 			$this->db->where('user_id', $id);
-			$user_group = $this->db->update('stock.user_group', $update_user_group);
+			$user_group = $this->db->update('teamfdec_stock.user_group', $update_user_group);
 			return ($update == true && $user_group == true) ? true : false;	
 		}
 			
@@ -73,13 +73,13 @@ class Model_users extends CI_Model
 	public function delete($id)
 	{
 		$this->db->where('id', $id);
-		$delete = $this->db->delete('stock.users');
+		$delete = $this->db->delete('teamfdec_stock.users');
 		return ($delete == true) ? true : false;
 	}
 
 	public function countTotalUsers()
 	{
-		$sql = "SELECT * FROM stock.users";
+		$sql = "SELECT * FROM teamfdec_stock.users";
 		$query = $this->db->query($sql);
 		return $query->num_rows();
 	}

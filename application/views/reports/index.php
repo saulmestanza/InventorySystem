@@ -54,7 +54,7 @@
               <h3 class="box-title">Total Parking - Report</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body table-responsive">
               <div class="chart">
                 <canvas id="barChart" style="height:250px"></canvas>
               </div>
@@ -67,7 +67,7 @@
               <h3 class="box-title">Total Paid Orders - Report Data</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body table-responsive">
               <table id="datatables" class="table table-bordered table-striped">
                 <thead>
                 <tr>

@@ -1335,7 +1335,7 @@ class XML_RPC_Message extends CI_Xmlrpc
 			case 'BASE64':
 				if ($this->xh[$the_parser]['vt'] !== 'value')
 				{
-					//two data elements inside a value: an error occurred!
+					//two data elements inside a value: an Ha ocurrido un error!
 					$this->xh[$the_parser]['isf'] = 2;
 					$this->xh[$the_parser]['isf_reason'] = 'There is a '.$name.' element following a '
 										.$this->xh[$the_parser]['vt'].' element inside a single value';

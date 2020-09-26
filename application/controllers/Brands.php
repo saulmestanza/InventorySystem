@@ -195,7 +195,7 @@ class Brands extends Admin_Controller
 
 			if($delete == true) {
 				$response['success'] = true;
-				$response['messages'] = "Successfully removed";	
+				$response['messages'] = "Eliminado exitosamente";	
 			}
 			else {
 				$response['success'] = false;

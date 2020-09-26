@@ -5,13 +5,9 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Manage
-      <small>Products</small>
+      Administrar
+      <small>Productos</small>
     </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Products</li>
-    </ol>
   </section>
 
   <!-- Main content -->
@@ -37,17 +33,17 @@
 
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Add Product</h3>
+            <h3 class="box-title">Agregar Producto</h3>
           </div>
           <!-- /.box-header -->
           <form role="form" action="<?php base_url('users/create') ?>" method="post" enctype="multipart/form-data">
-              <div class="box-body">
+              <div class="box-body table-responsive">
 
                 <?php echo validation_errors(); ?>
 
                 <div class="form-group">
 
-                  <label for="product_image">Image</label>
+                  <label for="product_image">Imágen</label>
                   <div class="kv-avatar">
                       <div class="file-loading">
                           <input id="product_image" name="product_image" type="file">
@@ -56,48 +52,39 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="product_name">Product name</label>
-                  <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter product name" autocomplete="off"/>
+                  <label for="product_name">Nombre</label>
+                  <input required type="text" class="form-control" id="product_name" name="product_name" autocomplete="off"/>
                 </div>
 
                 <div class="form-group">
                   <label for="sku">SKU</label>
-                  <input type="text" class="form-control" id="sku" name="sku" placeholder="Enter sku" autocomplete="off" />
+                  <input required type="text" class="form-control" id="sku" name="sku"autocomplete="off" />
                 </div>
 
                 <div class="form-group">
-                  <label for="price">Price</label>
-                  <input type="text" class="form-control" id="price" name="price" placeholder="Enter price" autocomplete="off" />
+                  <label for="price">Precio</label>
+                  <input required type="number" min="1" class="form-control" id="price" name="price" autocomplete="off" />
                 </div>
 
                 <div class="form-group">
-                  <label for="qty">Qty</label>
-                  <input type="text" class="form-control" id="qty" name="qty" placeholder="Enter Qty" autocomplete="off" />
+                  <label for="price">Precio de Compra</label>
+                  <input required type="number" min="1" class="form-control" id="price_bought" name="price_bought" autocomplete="off" />
+                </div>
+                
+                <div class="form-group">
+                  <label for="qty">Cantidad</label>
+                  <input required type="number" min="1" class="form-control" id="qty" name="qty" autocomplete="off" />
                 </div>
 
                 <div class="form-group">
-                  <label for="description">Description</label>
-                  <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter 
-                  description" autocomplete="off">
+                  <label for="description">Descrición</label>
+                  <textarea required type="text" class="form-control" id="description" name="description" autocomplete="off">
                   </textarea>
                 </div>
 
-                <?php if($attributes): ?>
-                  <?php foreach ($attributes as $k => $v): ?>
-                    <div class="form-group">
-                      <label for="groups"><?php echo $v['attribute_data']['name'] ?></label>
-                      <select class="form-control select_group" id="attributes_value_id" name="attributes_value_id[]" multiple="multiple">
-                        <?php foreach ($v['attribute_value'] as $k2 => $v2): ?>
-                          <option value="<?php echo $v2['id'] ?>"><?php echo $v2['value'] ?></option>
-                        <?php endforeach ?>
-                      </select>
-                    </div>    
-                  <?php endforeach ?>
-                <?php endif; ?>
-
                 <div class="form-group">
-                  <label for="brands">Brands</label>
-                  <select class="form-control select_group" id="brands" name="brands[]" multiple="multiple">
+                  <label for="brands">Marca</label>
+                  <select required class="form-control select_group" id="brands" name="brands">
                     <?php foreach ($brands as $k => $v): ?>
                       <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                     <?php endforeach ?>
@@ -105,8 +92,8 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="category">Category</label>
-                  <select class="form-control select_group" id="category" name="category[]" multiple="multiple">
+                  <label for="category">Categoría</label>
+                  <select required class="form-control select_group" id="category" name="category[]" multiple="multiple">
                     <?php foreach ($category as $k => $v): ?>
                       <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                     <?php endforeach ?>
@@ -114,8 +101,8 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="store">Store</label>
-                  <select class="form-control select_group" id="store" name="store">
+                  <label for="store">Tienda</label>
+                  <select required class="form-control select_group" id="store" name="store">
                     <?php foreach ($stores as $k => $v): ?>
                       <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                     <?php endforeach ?>
@@ -123,9 +110,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="store">Availability</label>
-                  <select class="form-control" id="availability" name="availability">
-                    <option value="1">Yes</option>
+                  <label for="store">Disponible</label>
+                  <select required class="form-control" id="availability" name="availability">
+                    <option value="1">Si</option>
                     <option value="2">No</option>
                   </select>
                 </div>
@@ -134,8 +121,8 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Save Changes</button>
-                <a href="<?php echo base_url('products/') ?>" class="btn btn-warning">Back</a>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="<?php echo base_url('products/') ?>" class="btn btn-warning">Cerrar</a>
               </div>
             </form>
           <!-- /.box-body -->
@@ -167,10 +154,6 @@
         }
     });
     
-    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 
-        'onclick="alert(\'Call your custom code here.\')">' +
-        '<i class="glyphicon glyphicon-tag"></i>' +
-        '</button>'; 
     $("#product_image").fileinput({
         overwriteInitial: true,
         maxFileSize: 1500,
@@ -184,7 +167,7 @@
         elErrorContainer: '#kv-avatar-errors-1',
         msgErrorClass: 'alert alert-block alert-danger',
         // defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar">',
-        layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+        layoutTemplates: {main2: '{preview} {remove} {browse}'},
         allowedFileExtensions: ["jpg", "png", "gif"]
     });
 

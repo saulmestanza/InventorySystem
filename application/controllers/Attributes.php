@@ -176,7 +176,7 @@ class Attributes extends Admin_Controller
 			$delete = $this->model_attributes->remove($attribute_id);
 			if($delete == true) {
 				$response['success'] = true;
-				$response['messages'] = "Successfully removed";	
+				$response['messages'] = "Eliminado exitosamente";	
 			}
 			else {
 				$response['success'] = false;
@@ -342,7 +342,7 @@ class Attributes extends Admin_Controller
 			$delete = $this->model_attributes->removeValue($attribute_value_id);
 			if($delete == true) {
 				$response['success'] = true;
-				$response['messages'] = "Successfully removed";	
+				$response['messages'] = "Eliminado exitosamente";	
 			}
 			else {
 				$response['success'] = false;

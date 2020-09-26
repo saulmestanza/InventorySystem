@@ -30,7 +30,7 @@ class Company extends Admin_Controller
 		$this->form_validation->set_rules('service_charge_value', 'Charge Amount', 'trim|integer');
 		$this->form_validation->set_rules('vat_charge_value', 'Vat Charge', 'trim|integer');
 		$this->form_validation->set_rules('address', 'Address', 'trim|required');
-		$this->form_validation->set_rules('message', 'Message', 'trim|required');
+		$this->form_validation->set_rules('message', 'Message', 'trim');
 	
 	
         if ($this->form_validation->run() == TRUE) {
@@ -51,11 +51,11 @@ class Company extends Admin_Controller
 
         	$update = $this->model_company->update($data, 1);
         	if($update == true) {
-        		$this->session->set_flashdata('success', 'Successfully created');
+        		$this->session->set_flashdata('success', 'Acción realizada exitosamente');
         		redirect('company/', 'refresh');
         	}
         	else {
-        		$this->session->set_flashdata('errors', 'Error occurred!!');
+        		$this->session->set_flashdata('errors', 'Ha ocurrido un error!!');
         		redirect('company/index', 'refresh');
         	}
         }

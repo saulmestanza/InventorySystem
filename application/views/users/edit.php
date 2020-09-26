@@ -37,7 +37,7 @@
               <h3 class="box-title">Edit User</h3>
             </div>
             <form role="form" action="<?php base_url('users/create') ?>" method="post">
-              <div class="box-body">
+              <div class="box-body table-responsive">
 
                 <?php echo validation_errors(); ?>
 

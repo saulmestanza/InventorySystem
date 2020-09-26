@@ -22,7 +22,7 @@
       <div class="col-md-12 col-xs-12">
 
         <div class="box">
-          <div class="box-body">
+          <div class="box-body table-responsive">
             <h4>Attribute name: <?php echo $attribute_data['name']; ?></h4>
           </div>
         </div>
@@ -52,7 +52,7 @@
             <h3 class="box-title">Manage Attributes Value</h3>
           </div>
           <!-- /.box-header -->
-          <div class="box-body">
+          <div class="box-body table-responsive">
             <table id="manageTable" class="table table-bordered table-striped">
               <thead>
               <tr>

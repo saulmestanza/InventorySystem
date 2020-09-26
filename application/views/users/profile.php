@@ -25,7 +25,7 @@
               <h3 class="box-title">Profile XXX</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body table-responsive">
               <table class="table table-bordered table-condensed table-hovered">
                 <tr>
                   <th>Username</th>

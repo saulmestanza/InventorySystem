@@ -39,7 +39,7 @@
             </div>
             <!-- /.box-header -->
             <form role="form" action="<?php base_url('users/setting') ?>" method="post">
-              <div class="box-body">
+              <div class="box-body table-responsive">
 
                 <?php echo validation_errors(); ?>
 

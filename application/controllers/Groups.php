@@ -56,11 +56,11 @@ class Groups extends Admin_Controller
 
         	$create = $this->model_groups->create($data);
         	if($create == true) {
-        		$this->session->set_flashdata('success', 'Successfully created');
+        		$this->session->set_flashdata('success', 'Acción realizada exitosamente');
         		redirect('groups/', 'refresh');
         	}
         	else {
-        		$this->session->set_flashdata('errors', 'Error occurred!!');
+        		$this->session->set_flashdata('errors', 'Ha ocurrido un error!!');
         		redirect('groups/create', 'refresh');
         	}
         }
@@ -101,7 +101,7 @@ class Groups extends Admin_Controller
 	        		redirect('groups/', 'refresh');
 	        	}
 	        	else {
-	        		$this->session->set_flashdata('errors', 'Error occurred!!');
+	        		$this->session->set_flashdata('errors', 'Ha ocurrido un error!!');
 	        		redirect('groups/edit/'.$id, 'refresh');
 	        	}
 	        }
@@ -136,11 +136,11 @@ class Groups extends Admin_Controller
 				else {
 					$delete = $this->model_groups->delete($id);
 					if($delete == true) {
-		        		$this->session->set_flashdata('success', 'Successfully removed');
+		        		$this->session->set_flashdata('success', 'Eliminado exitosamente');
 		        		redirect('groups/', 'refresh');
 		        	}
 		        	else {
-		        		$this->session->set_flashdata('error', 'Error occurred!!');
+		        		$this->session->set_flashdata('error', 'Ha ocurrido un error!!');
 		        		redirect('groups/delete/'.$id, 'refresh');
 		        	}
 				}	

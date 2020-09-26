@@ -66,11 +66,11 @@ class Users extends Admin_Controller
 
         	$create = $this->model_users->create($data, $this->input->post('groups'));
         	if($create == true) {
-        		$this->session->set_flashdata('success', 'Successfully created');
+        		$this->session->set_flashdata('success', 'Acción realizada exitosamente');
         		redirect('users/', 'refresh');
         	}
         	else {
-        		$this->session->set_flashdata('errors', 'Error occurred!!');
+        		$this->session->set_flashdata('errors', 'Ha ocurrido un error!!');
         		redirect('users/create', 'refresh');
         	}
         }
@@ -120,11 +120,11 @@ class Users extends Admin_Controller
 
 		        	$update = $this->model_users->edit($data, $id, $this->input->post('groups'));
 		        	if($update == true) {
-		        		$this->session->set_flashdata('success', 'Successfully created');
+		        		$this->session->set_flashdata('success', 'Acción realizada exitosamente');
 		        		redirect('users/', 'refresh');
 		        	}
 		        	else {
-		        		$this->session->set_flashdata('errors', 'Error occurred!!');
+		        		$this->session->set_flashdata('errors', 'Ha ocurrido un error!!');
 		        		redirect('users/edit/'.$id, 'refresh');
 		        	}
 		        }
@@ -152,7 +152,7 @@ class Users extends Admin_Controller
 			        		redirect('users/', 'refresh');
 			        	}
 			        	else {
-			        		$this->session->set_flashdata('errors', 'Error occurred!!');
+			        		$this->session->set_flashdata('errors', 'Ha ocurrido un error!!');
 			        		redirect('users/edit/'.$id, 'refresh');
 			        	}
 					}
@@ -198,11 +198,11 @@ class Users extends Admin_Controller
 			if($this->input->post('confirm')) {
 					$delete = $this->model_users->delete($id);
 					if($delete == true) {
-		        		$this->session->set_flashdata('success', 'Successfully removed');
+		        		$this->session->set_flashdata('success', 'Eliminado exitosamente');
 		        		redirect('users/', 'refresh');
 		        	}
 		        	else {
-		        		$this->session->set_flashdata('error', 'Error occurred!!');
+		        		$this->session->set_flashdata('error', 'Ha ocurrido un error!!');
 		        		redirect('users/delete/'.$id, 'refresh');
 		        	}
 
@@ -263,7 +263,7 @@ class Users extends Admin_Controller
 		        		redirect('users/setting/', 'refresh');
 		        	}
 		        	else {
-		        		$this->session->set_flashdata('errors', 'Error occurred!!');
+		        		$this->session->set_flashdata('errors', 'Ha ocurrido un error!!');
 		        		redirect('users/setting/', 'refresh');
 		        	}
 		        }
@@ -291,7 +291,7 @@ class Users extends Admin_Controller
 			        		redirect('users/setting/', 'refresh');
 			        	}
 			        	else {
-			        		$this->session->set_flashdata('errors', 'Error occurred!!');
+			        		$this->session->set_flashdata('errors', 'Ha ocurrido un error!!');
 			        		redirect('users/setting/', 'refresh');
 			        	}
 					}

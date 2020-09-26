@@ -52,22 +52,25 @@ class Orders extends Admin_Controller
 			$buttons = '';
 
 			if(in_array('viewOrder', $this->permission)) {
-				$buttons .= '<a target="__blank" href="'.base_url('orders/printDiv/'.$value['id']).'" class="btn btn-default"><i class="fa fa-print"></i></a>';
+				$buttons .= '<a target="__blank" href="'.base_url('orders/printDiv/'.$value['id']).'" class="btn btn-warning"><i class="fa fa-print"></i></a>';
 			}
 
 			if(in_array('updateOrder', $this->permission)) {
-				$buttons .= ' <a href="'.base_url('orders/update/'.$value['id']).'" class="btn btn-default"><i class="fa fa-pencil"></i></a>';
+				$buttons .= ' <a href="'.base_url('orders/update/'.$value['id']).'" class="btn btn-success"><i class="fa fa-pencil"></i></a>';
 			}
 
 			if(in_array('deleteOrder', $this->permission)) {
-				$buttons .= ' <button type="button" class="btn btn-default" onclick="removeFunc('.$value['id'].')" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
+				$buttons .= ' <button type="button" class="btn btn-danger" onclick="removeFunc('.$value['id'].')" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
 			}
 
 			if($value['paid_status'] == 1) {
-				$paid_status = '<span class="label label-success">Paid</span>';	
+				$paid_status = '<span class="label label-success">Pagado</span>';	
+			}
+			else if($value['paid_status'] == 2) {
+				$paid_status = '<span class="label label-warning">No Pagado</span>';
 			}
 			else {
-				$paid_status = '<span class="label label-warning">Not Paid</span>';
+				$paid_status = '<span class="label label-default">Proforma</span>';
 			}
 
 			$result['data'][$key] = array(
@@ -76,7 +79,7 @@ class Orders extends Admin_Controller
 				$value['customer_phone'],
 				$date_time,
 				$count_total_item,
-				$value['net_amount'],
+				'$'.$value['net_amount'],
 				$paid_status,
 				$buttons
 			);
@@ -106,11 +109,11 @@ class Orders extends Admin_Controller
         	$order_id = $this->model_orders->create();
         	
         	if($order_id) {
-        		$this->session->set_flashdata('success', 'Successfully created');
+        		$this->session->set_flashdata('success', 'Acción realizada exitosamente');
         		redirect('orders/update/'.$order_id, 'refresh');
         	}
         	else {
-        		$this->session->set_flashdata('errors', 'Error occurred!!');
+        		$this->session->set_flashdata('errors', 'Ha ocurrido un error!!');
         		redirect('orders/create/', 'refresh');
         	}
         }
@@ -181,7 +184,7 @@ class Orders extends Admin_Controller
         		redirect('orders/update/'.$id, 'refresh');
         	}
         	else {
-        		$this->session->set_flashdata('errors', 'Error occurred!!');
+        		$this->session->set_flashdata('errors', 'Ha ocurrido un error!!');
         		redirect('orders/update/'.$id, 'refresh');
         	}
         }
@@ -227,7 +230,7 @@ class Orders extends Admin_Controller
             $delete = $this->model_orders->remove($order_id);
             if($delete == true) {
                 $response['success'] = true;
-                $response['messages'] = "Successfully removed"; 
+                $response['messages'] = "Eliminado exitosamente"; 
             }
             else {
                 $response['success'] = false;

@@ -192,7 +192,7 @@ class Category extends Admin_Controller
 			$delete = $this->model_category->remove($category_id);
 			if($delete == true) {
 				$response['success'] = true;
-				$response['messages'] = "Successfully removed";	
+				$response['messages'] = "Eliminado exitosamente";	
 			}
 			else {
 				$response['success'] = false;
